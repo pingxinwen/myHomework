@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>个人通讯录管理系统</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/mystyle.css">
+
+</head>
+
+<body>
+    <div id="header">
+        <h1>用户界面</h1>
+    </div>
+    <div class="content">
+        <table id="detail">
+            <tr>
+                <th>姓名</th>
+                <th>电话</th>
+                <th>邮箱</th>
+                <th>住址</th>
+                <th>QQ</th>
+                <th colspan="2">操作</th>
+            </tr>
+            <tr>
+                <td>张三</td>
+                <td>13011223344</td>
+                <td>zhangsan@gmail.com</td>
+                <td>北京市海淀区</td>
+                <td>1691234567</td>
+                <td>删除</td>
+                <td>编辑</td>
+            </tr>
+            <tr class="alt">
+                <td>李四</td>
+                <td>15101234567</td>
+                <td>lisi@163.com</td>
+                <td>北京市昌平区</td>
+                <td>181393936</td>
+                <td>删除</td>
+                <td>编辑</td>
+            </tr>
+            <tr>
+                <td>赵云</td>
+                <td>13919876543</td>
+                <td>zhaoy0431@gmail.com</td>
+                <td>北京市海淀区</td>
+                <td>100565612</td>
+                <td>删除</td>
+                <td>编辑</td>
+            </tr>
+        </table>
+    </div>
+    <div class="content">
+        <div class="button-line">
+            <a href="index.html"><input type="button" class="button" value="退出系统"></a>
+        </div>
+        <div class="button-line">
+            <a href="create.html"><input type="button" class="button" value="添加新记录"></a>
+        </div>
+    </div>
+
+    <script>
+        function getParams(key) {
+            var reg = new RegExp("(^|&)" + key + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) {
+                return decodeURIComponent(r[2]);
+            }
+            return null;
+        }
+
+        window.onload = function() {
+            if (window.location.href.indexOf("?") > 0) {
+                var newline = document.createElement("tr");
+
+                var name = document.createElement("td");
+                name.innerHTML = getParams("name");
+                newline.appendChild(name);
+                var phoneNumber = document.createElement("td");
+                phoneNumber.innerHTML = getParams("phoneNumber");
+                newline.appendChild(phoneNumber);
+                var mail = document.createElement("td");
+                mail.innerHTML = getParams("mail");
+                newline.appendChild(mail);
+                var address = document.createElement("td");
+                address.innerHTML = getParams("address");
+                newline.appendChild(address);
+                var qnumber = document.createElement("td");
+                qnumber.innerHTML = getParams("qnumber");
+                newline.appendChild(qnumber);
+
+                var bt1 = document.createElement("td");
+                bt1.innerHTML = "删除";
+                newline.appendChild(bt1);
+                var bt2 = document.createElement("td");
+                bt2.innerHTML = "编辑";
+                newline.appendChild(bt2);
+
+                newline.className = "alt";
+                var table = document.getElementById("detail");
+                table.childNodes[1].appendChild(newline);
+            }
+        }
+    </script>
+</body>
+
+</html>

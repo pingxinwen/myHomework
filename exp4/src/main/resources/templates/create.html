@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>个人通讯录管理系统</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/mystyle.css">
+</head>
+
+<body>
+    <div id="header">
+        <h1>添加新记录</h1>
+    </div>
+    <div class="content">
+        <form action="user.html" method="GET" onsubmit="return checkform(this)">
+            <div class="text_line more_margin">
+                姓名：
+                <input type="text" name="name">
+            </div>
+            <div class="text_line more_margin">
+                电话：
+                <input type="text" name="phoneNumber">
+            </div>
+            <div class="text_line more_margin">
+                邮箱：
+                <input type="text" name="mail">
+            </div>
+            <div class="text_line more_margin">
+                地址：
+                <input type="text" name="address">
+            </div>
+            <div class="text_line more_margin">
+                QQ：
+                <input type="text" name="qnumber">
+            </div>
+            <button type="submit" class="button">提交</button>
+        </form>
+
+    </div>
+
+    <script>
+        function isempty(item, str) {
+            if (item.value == null || item.value == "") {
+                alert("没有输入" + str + "！");
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+        function checkform(thisform) {
+            with(thisform) {
+                if (!isempty(name, "姓名") || !isempty(phoneNumber, "电话") || !isempty(mail, "邮箱") || !isempty(address, "地址") || !isempty(qnumber, "QQ")) {
+                    return false;
+                }
+                if (!/^\d+$/.test(phoneNumber.value)) {
+                    alert("请输入正确的电话，内容应为纯数字！");
+                    return false;
+                }
+                if (!/^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/.test(mail.value)) {
+                    alert("请输入正确的电子邮箱！");
+                    return false;
+                }
+                if (!/^\d+$/.test(qnumber.value)) {
+                    alert("请输入正确的QQ号，内容应为纯数字！");
+                    return false;
+                }
+                return true;
+            }
+        }
+    </script>
+</body>
+
+</html>
