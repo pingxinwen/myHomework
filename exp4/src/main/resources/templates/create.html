@@ -4,7 +4,7 @@
 <head>
     <title>个人通讯录管理系统</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="/css/mystyle.css">
+    <link rel="stylesheet" href="/static/css/mystyle.css">
 </head>
 
 <body>
@@ -12,7 +12,7 @@
         <h1>添加新记录</h1>
     </div>
     <div class="content">
-        <form action="user.html" method="GET" onsubmit="return checkform(this)">
+        <form action="/user" method="GET" onsubmit="return checkform(this)">
             <div class="text_line more_margin">
                 姓名：
                 <input type="text" name="name">
