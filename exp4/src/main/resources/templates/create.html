@@ -38,6 +38,8 @@
 
     </div>
 
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.min.js"></script>
+
     <script>
         function isempty(item, str) {
             if (item.value == null || item.value == "") {
@@ -65,6 +67,16 @@
                     alert("请输入正确的QQ号，内容应为纯数字！");
                     return false;
                 }
+
+                $.ajax({
+                    url:"/add",
+                    type:"POST",
+                    data:'{"name":"OK"}',
+                    contentType:"application/json",
+                    success: function (){
+                        alert("success!");
+                    }
+                });
                 return true;
             }
         }
