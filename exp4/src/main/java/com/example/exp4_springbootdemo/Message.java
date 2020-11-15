@@ -2,14 +2,14 @@ package com.example.exp4_springbootdemo;
 
 
 public class Message {
-    private final int id;
-    private final String name;
-    private final int phoneNumber;
-    private final String mail;
-    private final String address;
-    private final int qnumber;
+    private int id;
+    private String name;
+    private String phoneNumber;
+    private String mail;
+    private String address;
+    private String qnumber;
 
-    public Message(int id, String name, int phoneNumber, String mail, String address, int qnumber) {
+    public Message(int id, String name, String phoneNumber, String mail, String address, String qnumber) {
         this.id = id;
         this.name = name;
         this.phoneNumber = phoneNumber;
@@ -26,7 +26,7 @@ public class Message {
         return name;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
@@ -38,9 +38,31 @@ public class Message {
         return address;
     }
 
-    public int getQnumber() {
+    public String getQnumber() {
         return qnumber;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setQnumber(String qnumber) {
+        this.qnumber = qnumber;
+    }
 }

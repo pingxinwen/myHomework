@@ -1,6 +1,7 @@
 package com.example.exp4_springbootdemo;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.http.HttpServletRequest;
@@ -14,15 +15,16 @@ public class IndexController {
     }
 
     @RequestMapping("/login")
-    public  String login(HttpServletRequest request,@RequestParam String username, @RequestParam String password){
+    public String login(Model model,HttpServletRequest request, @RequestParam String username, @RequestParam String password){
         HttpSession session = request.getSession();
-        System.out.println("login!");
         if(username.equals("user") && password.equals("123456")){
             session.setAttribute("login",true);
-            return "user";
+            session.setAttribute("record",new UserInfo(username));
+            return "redirect:/user";
         }
         else{
             session.setAttribute("login",false);
+            model.addAttribute("alert","用户名或密码错误");
             return "index";
         }
     }

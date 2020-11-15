@@ -12,7 +12,7 @@
         <h1>添加新记录</h1>
     </div>
     <div class="content">
-        <form action="/user" method="GET" onsubmit="return checkform(this)">
+        <form onsubmit="return checkform(this)">
             <div class="text_line more_margin">
                 姓名：
                 <input type="text" name="name">
@@ -38,7 +38,7 @@
 
     </div>
 
-    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.min.js"></script>
+    <script type="text/javascript" src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 
     <script>
         function isempty(item, str) {
@@ -67,17 +67,29 @@
                     alert("请输入正确的QQ号，内容应为纯数字！");
                     return false;
                 }
+                var record = {
+                    "id":0,
+                    "name":name.value,
+                    "phoneNumber":phoneNumber.value,
+                    "mail":mail.value,
+                    "address":address.value,
+                    "qnumber":qnumber.value,
+                };
 
                 $.ajax({
                     url:"/add",
                     type:"POST",
-                    data:'{"name":"OK"}',
+                    data:JSON.stringify(record),
                     contentType:"application/json",
                     success: function (){
-                        alert("success!");
+                        alert("添加成功！");
+                        window.location.href="/user";
+                    },
+                    error: function (){
+                        alert("添加失败，请重试！");
                     }
                 });
-                return true;
+                return false;
             }
         }
     </script>

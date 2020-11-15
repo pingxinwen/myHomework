@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh" xmlns:th="http://www.thymeleadf.org">
 
 <head>
     <title>个人通讯录管理系统</title>
@@ -8,56 +8,47 @@
 </head>
 
 <body>
-    <div id="header">
-        <h1>用户界面</h1>
+<div id="header">
+    <h1>用户界面</h1>
+</div>
+<div class="content">
+    <table id="detail">
+        <thead>
+        <tr>
+            <th>姓名</th>
+            <th>电话</th>
+            <th>邮箱</th>
+            <th>住址</th>
+            <th>QQ</th>
+            <th colspan="2">操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="mes,state:${message}" th:class="${state.even}? 'alt'">
+            <td th:text="${mes.name}"></td>
+            <td th:text="${mes.phoneNumber}"></td>
+            <td th:text="${mes.mail}"></td>
+            <td th:text="${mes.address}"></td>
+            <td th:text="${mes.qnumber}"></td>
+            <td><a th:href="@{/edit/{id}(id=${mes.id})}">
+                <button>编辑</button>
+            </a></td>
+            <td><a th:href="@{/delete/{id}(id=${mes.id})}">
+                <button>删除</button>
+            </a></td>
+        </tr>
+        </tbody>
+
+    </table>
+</div>
+<div class="content">
+    <div class="button-line">
+        <a href="/create"><input type="button" class="button" value="添加新记录"></a>
     </div>
-    <div class="content">
-        <table id="detail">
-            <tr>
-                <th>姓名</th>
-                <th>电话</th>
-                <th>邮箱</th>
-                <th>住址</th>
-                <th>QQ</th>
-                <th colspan="2">操作</th>
-            </tr>
-            <tr>
-                <td>张三</td>
-                <td>13011223344</td>
-                <td>zhangsan@gmail.com</td>
-                <td>北京市海淀区</td>
-                <td>1691234567</td>
-                <td>删除</td>
-                <td>编辑</td>
-            </tr>
-            <tr class="alt">
-                <td>李四</td>
-                <td>15101234567</td>
-                <td>lisi@163.com</td>
-                <td>北京市昌平区</td>
-                <td>181393936</td>
-                <td>删除</td>
-                <td>编辑</td>
-            </tr>
-            <tr>
-                <td>赵云</td>
-                <td>13919876543</td>
-                <td>zhaoy0431@gmail.com</td>
-                <td>北京市海淀区</td>
-                <td>100565612</td>
-                <td>删除</td>
-                <td>编辑</td>
-            </tr>
-        </table>
+    <div class="button-line">
+        <a href="/"><input type="button" class="button" value="退出系统"></a>
     </div>
-    <div class="content">
-        <div class="button-line">
-            <a href="/"><input type="button" class="button" value="退出系统"></a>
-        </div>
-        <div class="button-line">
-            <a href="/create"><input type="button" class="button" value="添加新记录"></a>
-        </div>
-    </div>
+</div>
 </body>
 
 </html>
