@@ -59,7 +59,7 @@ p.error {
 }
 
 #detail {
-    width: 90%;
+    width: 75%;
     margin: 0 auto;
     border: 1px #000000;
     border-collapse: collapse;
@@ -78,4 +78,10 @@ p.error {
 
 #detail tr.alt {
     background-color: #a0ffff;
+}
+
+#detail button {
+    font-size: 120%;
+    height: auto;
+    width: 45%;
 }

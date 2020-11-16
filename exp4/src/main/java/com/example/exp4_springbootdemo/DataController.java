@@ -13,8 +13,6 @@ public class DataController {
     @ResponseBody
     @PostMapping("/add")
     public void addMessage(HttpServletRequest request, @RequestBody Message message){
-        System.out.println(message.getName());
-        System.out.println(message.getQnumber());
         HttpSession session = request.getSession();
         try {
             UserInfo info = (UserInfo) session.getAttribute("record");

@@ -29,7 +29,12 @@ public class UserController {
         HttpSession session = request.getSession();
         UserInfo info = (UserInfo)session.getAttribute("record");
         Message message = info.findMessage(id);
-        model.addAttribute("mes",message);
-        return "edit";
+        if (message != null){
+            model.addAttribute("mes",message);
+            return "edit";
+        }
+        else {
+            return "NotFound";
+        }
     }
 }

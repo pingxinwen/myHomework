@@ -33,7 +33,7 @@
             <td><a th:href="@{/edit/{id}(id=${mes.id})}">
                 <button>编辑</button>
             </a></td>
-            <td><a th:href="@{/delete/{id}(id=${mes.id})}">
+            <td><a th:href="@{/delete/{id}(id=${mes.id})}" onclick="return confirm('确定要删除吗？')">
                 <button>删除</button>
             </a></td>
         </tr>
@@ -46,9 +46,10 @@
         <a href="/create"><input type="button" class="button" value="添加新记录"></a>
     </div>
     <div class="button-line">
-        <a href="/"><input type="button" class="button" value="退出系统"></a>
+        <a href="/logout" onclick="return confirm('真的要退出吗？')"><input type="button" class="button" value="退出系统"></a>
     </div>
 </div>
+
 </body>
 
 </html>

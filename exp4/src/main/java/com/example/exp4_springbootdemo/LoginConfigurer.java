@@ -13,7 +13,6 @@ public class LoginConfigurer implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         HttpSession session = request.getSession();
         if (session.getAttribute("login")==null || session.getAttribute("login").equals(false)){
-            System.out.println("已拦截！");
             session.setAttribute("login",false);
             response.sendRedirect("/");
             return false;
