@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 @Controller
 public class UserController {
+    /*用户主界面*/
     @GetMapping("/user")
     public String user (HttpServletRequest request,Model model) {
         HttpSession session = request.getSession();
@@ -19,11 +20,13 @@ public class UserController {
         return "user";
     }
 
+    /*添加记录界面*/
     @GetMapping("/create")
     public String create(Model model) {
         return "create";
     }
 
+    /*编辑记录界面*/
     @GetMapping("/edit/{id}")
     public String edit(Model model,HttpServletRequest request, @PathVariable int id){
         HttpSession session = request.getSession();

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class DataController {
 
+    /*添加数据*/
     @ResponseBody
     @PostMapping("/add")
     public void addMessage(HttpServletRequest request, @RequestBody Message message){
@@ -23,6 +24,7 @@ public class DataController {
         }
     }
 
+    /*修改数据*/
     @ResponseBody
     @PostMapping("/change")
     public void changeMessage(HttpServletRequest request,@RequestBody Message message){
@@ -41,6 +43,8 @@ public class DataController {
         }
     }
 
+
+    /*删除数据*/
     @GetMapping("/delete/{id}")
     public String deleteMessage(HttpServletRequest request, @PathVariable String id){
         HttpSession session =request.getSession();
