@@ -1,6 +1,6 @@
-#READ ME
+# READ ME
 
-##实验说明
+## 实验说明
 
     个人通讯录管理系统Part2
     说明:本系统是一个可供用户录入、 修改、查询、删除自己的联系人信息的web系统，本系统是通过多次作业逐步完成的，本次作业基于之前制作的静态页面，创建一个spring boot web项目(springmvc+thymeleaf) 实现下述功能
@@ -12,8 +12,8 @@
     5.使用git进行代码管理，提交作业时提供项目的git地址即可
     说明:目前还未学习数据库的操作，所以可将用户提交的数据保存在session中进行模拟。
     
-##代码结构
-###1.Controller
+## 代码结构
+### 1. Controller
 
 设计了三个controller，分别为
 
@@ -23,15 +23,15 @@
 
 * DataController 控制数据传输
 
-###2.拦截器
+### 2. 拦截器
 * LoginConfigurer 提供了判断用户是否登录和转向登录界面的方法
 
 * Webconfigurer 启用LoginConfigurer并设置了拦截哪些页面
 
-###3.数据类
+### 3. 数据类
 用Message类的对象来保存每条联系人记录，用UserInfo对象来关联联系人记录和用户
 
-##页面
+## 页面
 
 设计了如下页面：
 
