@@ -5,6 +5,8 @@
     <title>个人通讯录管理系统</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/static/css/mystyle.css">
+    <script type="text/javascript" src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script rel="script" src="/static/js/myscript.js"></script>
 </head>
 
 <body>
@@ -12,7 +14,7 @@
     <h1>修改记录</h1>
 </div>
 <div class="content">
-    <form onsubmit="return checkform(this)">
+    <form id="listForm" onsubmit="return checkform()">
         <div class="text_line more_margin">
             姓名：
             <input type="text" name="name" th:value="${mes.name}">
@@ -36,66 +38,47 @@
         <button type="submit" class="button">提交</button>
     </form>
 </div>
-<script type="text/javascript" src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 
 <script>
-    function isempty(item, str) {
-        if (item.value == null || item.value == "") {
-            alert("没有输入" + str + "！");
-            return false;
-        } else {
-            return true;
-        }
-    }
-
-    function checkform(thisform) {
-        with(thisform) {
-            if (!isempty(name, "姓名") || !isempty(phoneNumber, "电话") || !isempty(mail, "邮箱") || !isempty(address, "地址") || !isempty(qnumber, "QQ")) {
-                return false;
-            }
-            if (!/^\d+$/.test(phoneNumber.value)) {
-                alert("请输入正确的电话，内容应为纯数字！");
-                return false;
-            }
-            if (!/^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/.test(mail.value)) {
-                alert("请输入正确的电子邮箱！");
-                return false;
-            }
-            if (!/^\d+$/.test(qnumber.value)) {
-                alert("请输入正确的QQ号，内容应为纯数字！");
-                return false;
-            }
-
-            var id;
-            var editId = window.location.pathname.match(/\d+/);
-            if(editId != null)
-                id = parseInt(editId[0]);
-            else
-                id = 0;
-            var record = {
-                "id":id,
-                "name":name.value,
-                "phoneNumber":phoneNumber.value,
-                "mail":mail.value,
-                "address":address.value,
-                "qnumber":qnumber.value,
-            };
-
-            $.ajax({
-                url:"/change",
-                type:"POST",
-                data:JSON.stringify(record),
-                contentType:"application/json",
-                success: function (){
-                    alert("添加成功！");
-                    window.location.href="/user";
-                },
-                error: function (){
-                    alert("添加失败，请重试！");
-                }
-            });
+    function checkform() {
+        var item = getdata();
+        if (!isempty(item.name, "姓名") || !isempty(item.phoneNumber, "电话") || !isempty(item.mail, "邮箱") || !isempty(item.address, "地址") || !isempty(item.qnumber, "QQ")) {
             return false;
         }
+        if (!/^\d+$/.test(item.phoneNumber)) {
+            alert("请输入正确的电话，内容应为纯数字！");
+            return false;
+        }
+        if (!/^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/.test(item.mail)) {
+            alert("请输入正确的电子邮箱！");
+            return false;
+        }
+        if (!/^\d+$/.test(item.qnumber)) {
+            alert("请输入正确的QQ号，内容应为纯数字！");
+            return false;
+        }
+
+        var editId = window.location.pathname.match(/\d+/);
+        if (editId != null)
+            item.id = parseInt(editId[0]);
+        else
+            item.id = 0;
+
+
+        $.ajax({
+            url: "/change",
+            type: "PUT",
+            data: JSON.stringify(item),
+            contentType: "application/json",
+            success: function () {
+                alert("添加成功！");
+                window.location.href = "/user";
+            },
+            error: function () {
+                alert("添加失败，请重试！");
+            }
+        });
+        return false;
     }
 </script>
 </body>

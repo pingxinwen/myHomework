@@ -17,6 +17,7 @@ public class DataController {
         HttpSession session = request.getSession();
         try {
             UserInfo info = (UserInfo) session.getAttribute("record");
+            System.out.println(message);
             info.addMessage(message);
         }
         catch (NullPointerException npe){
@@ -26,7 +27,7 @@ public class DataController {
 
     /*修改数据*/
     @ResponseBody
-    @PostMapping("/change")
+    @PutMapping("/change")
     public void changeMessage(HttpServletRequest request,@RequestBody Message message){
         HttpSession session = request.getSession();
         try {
