@@ -44,7 +44,7 @@ p {
 }
 
 .more_margin {
-    margin-bottom: 22px;
+    margin-bottom: 10px;
 }
 
 p.error {
@@ -84,4 +84,9 @@ p.error {
     font-size: 120%;
     height: auto;
     width: auto;
+}
+
+#phone_hint {
+    font-size: 12px;
+    margin-left: 60px;
 }

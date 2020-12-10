@@ -4,8 +4,8 @@
 <head>
     <title>个人通讯录管理系统</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="/static/css/mystyle.css">
-    <script type="text/javascript" src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <link href="/static/css/mystyle.css" rel="stylesheet">
+    <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" type="text/javascript"></script>
     <script rel="script" src="/static/js/myscript.js"></script>
 </head>
 
@@ -13,41 +13,40 @@
 <div id="header">
     <h1>添加新记录</h1>
 </div>
-<div  class="content">
+<div class="content">
     <form id="listForm" onsubmit="return checkform()">
         <div class="text_line more_margin">
             <label>姓名：</label>
-            <input type="text" name="name">
+            <input name="name" type="text">
         </div>
 
         <div class="text_line more_margin">
             <label>电话：</label>
-            <input type="text" name="phoneNumber">
+            <input name="phoneNumber" type="text">
+            <p id="phone_hint"></p>
         </div>
         <div class="text_line more_margin">
             <label>邮箱：</label>
-            <input type="text" name="mail">
+            <input name="mail" type="text">
         </div>
         <div class="text_line more_margin">
             <label>地址：</label>
-            <input type="text" name="address">
+            <input name="address" type="text">
         </div>
         <div class="text_line more_margin">
             <label>QQ：</label>
-            <input type="text" name="qnumber">
+            <input name="qnumber" type="text">
         </div>
-        <button type="submit" class="button">提交</button>
+        <button class="button" type="submit">提交</button>
     </form>
 
 </div>
 
 
 <script>
-
-    function checkform(){
-
+    function checkform() {
         var item = getdata();
-        console.log(JSON.stringify(item));
+        //console.log(JSON.stringify(item));
         if (!isempty(item.name, "姓名") || !isempty(item.phoneNumber, "电话") || !isempty(item.mail, "邮箱") || !isempty(item.address, "地址") || !isempty(item.qnumber, "QQ")) {
             return false;
         }
@@ -63,8 +62,6 @@
             alert("请输入正确的QQ号，内容应为纯数字！");
             return false;
         }
-
-
         $.ajax({
             url: "/add",
             type: "POST",
@@ -80,6 +77,29 @@
         });
         return false;
     }
+    $("input[name='phoneNumber']").blur(function check_phoneNumber(){
+        //console.log("失去了焦点");
+        var phoneNumber = $("input[name='phoneNumber']").val();
+        if(phoneNumber!=null && phoneNumber!==""){
+            $.ajax({
+                url:"/phoneNumber/"+phoneNumber,
+                method:"GET",
+                dataType:"JSON",
+                success:function (result,status,xhr){
+                    //console.log(result);
+                    if(result===true){
+                        $("#phone_hint").css("color","red").text("这个电话已经被记录过了！");
+                    }
+                    else{
+                        $("#phone_hint").css("color","green").text("这个电话还没被记录！");
+                    }
+                },
+                error:function (){
+                    $("#phone_hint").css("color","black").text("貌似网络出了差错……");
+                }
+            })
+        }
+    })
 </script>
 </body>
 

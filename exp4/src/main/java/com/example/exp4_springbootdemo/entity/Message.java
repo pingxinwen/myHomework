@@ -1,8 +1,16 @@
-package com.example.exp4_springbootdemo;
+package com.example.exp4_springbootdemo.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+@Entity
 public class Message {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+
     private String name;
     private String phoneNumber;
     private String mail;
@@ -16,6 +24,10 @@ public class Message {
         this.mail = mail;
         this.address = address;
         this.qnumber = qnumber;
+    }
+
+    public Message() {
+
     }
 
     public int getId() {
@@ -64,5 +76,25 @@ public class Message {
 
     public void setQnumber(String qnumber) {
         this.qnumber = qnumber;
+    }
+
+    public void copyMessage(Message src){
+        this.setName(src.name);
+        this.setPhoneNumber(src.name);
+        this.setAddress(src.address);
+        this.setMail(src.mail);
+        this.setQnumber(src.qnumber);
+    }
+
+    @Override
+    public String toString() {
+        return "Message{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", mail='" + mail + '\'' +
+                ", address='" + address + '\'' +
+                ", qnumber='" + qnumber + '\'' +
+                '}';
     }
 }

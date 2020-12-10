@@ -1,4 +1,4 @@
-package com.example.exp4_springbootdemo;
+package com.example.exp4_springbootdemo.entity;
 
 import java.util.ArrayList;
 import java.util.List;

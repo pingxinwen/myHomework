@@ -1,4 +1,5 @@
-package com.example.exp4_springbootdemo;
+package com.example.exp4_springbootdemo.controller;
+
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,8 +28,6 @@ public class IndexController {
         HttpSession session = request.getSession();
         if(username.equals("user") && password.equals("123456")){
             session.setAttribute("login",true);
-            session.setAttribute("record",new UserInfo(username));
-            session.setMaxInactiveInterval(60*20);
             return "redirect:/user";
         }
         else{
@@ -49,7 +48,6 @@ public class IndexController {
         else{
             /*执行登出*/
             session.setAttribute("login",false);
-            session.removeAttribute("record");
             attributes.addFlashAttribute("alert","退出登录成功");
         }
 
