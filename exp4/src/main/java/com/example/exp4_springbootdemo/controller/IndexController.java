@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,17 +24,18 @@ public class IndexController {
     }
 
     /*登录信息提交*/
+    @ResponseBody
     @RequestMapping("/login")
-    public String login(RedirectAttributes attributes,HttpServletRequest request, @RequestParam String username, @RequestParam String password){
+    public boolean login(RedirectAttributes attributes,HttpServletRequest request, @RequestParam String username, @RequestParam String password){
         HttpSession session = request.getSession();
         if(username.equals("user") && password.equals("123456")){
             session.setAttribute("login",true);
-            return "redirect:/user";
+            return true;
         }
         else{
             session.setAttribute("login",false);
             attributes.addFlashAttribute("alert","用户名或密码错误");
-            return "redirect:/";
+            return false;
         }
     }
 
