@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>计算器</title>
+    <link rel="stylesheet" href="calc.css">
+</head>
+
+<body>
+    <div class="container">
+        <div id="calculater">
+            <div class="title">Calculater</div>
+            <div id="displayer">
+                <div id="history">This is a simple calculater.</div>
+                <div id="show">Hello!</div>
+            </div>
+
+            <div class="buttons">
+                <div onclick="pow2()">x&sup2;</div>
+                <div onclick="putInOperater('^','**')">x<span class="super">y</span></div>
+                <div onclick="triangular('sin')">sin</div>
+                <div onclick="triangular('cos')">cos</div>
+                <div onclick="triangular('tan')">tan</div>
+                <div onclick="sqrt()">&radic;</div>
+                <div onclick="powerBy10()">10<span class="super">x</span></div>
+                <div onclick="buttonLog()">log</div>
+                <div onclick="putInNumber('EXP')">Exp</div>
+                <div onclick="putInOperater('Mod','%')">Mod</div>
+                <div>&uarr;</div>
+                <div class="warning" onclick="buttonCE()">CE</div>
+                <div class="warning" onclick="buttonC()">C</div>
+                <div class="warning" onclick="buttonDelete()">DEL</div>
+                <div onclick="putInOperater('&divide;','/')">&divide;</div>
+                <div onclick="putInNumber('PI')">&prod;</div>
+                <div onclick="putInNumber('7')">7</div>
+                <div onclick="putInNumber('8')">8</div>
+                <div onclick="putInNumber('9')">9</div>
+                <div onclick="putInOperater('*','*')">&times;</div>
+                <div onclick="factorial()">n!</div>
+                <div onclick="putInNumber('4')">4</div>
+                <div onclick="putInNumber('5')">5</div>
+                <div onclick="putInNumber('6')">6</div>
+                <div onclick="putInOperater('-')">&minus;</div>
+                <div onclick="getReverse()">&plusmn;</div>
+                <div onclick="putInNumber('1')">1</div>
+                <div onclick="putInNumber('2')">2</div>
+                <div onclick="putInNumber('3')">3</div>
+                <div onclick="putInOperater('+')">&plus;</div>
+                <div onclick="putInBracket('(')">(</div>
+                <div onclick="putInBracket(')')">)</div>
+                <div onclick="putInNumber('0')">0</div>
+                <div onclick="putInNumber('.')">.</div>
+                <div class="equals" onclick="getResult()">&equals;</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="calc.js"></script>
+</body>
+
+</html>
