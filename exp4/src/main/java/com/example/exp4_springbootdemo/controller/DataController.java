@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 
 @Controller
@@ -38,11 +39,22 @@ public class DataController {
 
 
     /*删除数据*/
+    @ResponseBody
     @GetMapping("/delete/{id}")
-    public String deleteMessage(HttpServletResponse response, @PathVariable("id") String id_string)throws IOException {
+    public boolean deleteMessage(HttpServletResponse response, @PathVariable("id") String id_string)throws IOException {
         int id = Integer.parseInt(id_string);
-        messageRepository.deleteById(id);
-        return "redirect:/user";
+        if (messageRepository.existsById(id)){
+            messageRepository.deleteById(id);
+            return true;
+        }
+        else return false;
+    }
+
+    /*查询获取数据*/
+    @ResponseBody
+    @GetMapping("/find/{id}")
+    public List<Message> findMessage(@PathVariable("id") int id) {
+        return messageRepository.findById(id);
     }
 
     /*查询是否存在电话号*/
