@@ -1,3 +1,5 @@
+import './calc.css'
+
 var _show = {
     now: " ",
     history: " "
@@ -13,6 +15,7 @@ var show = new Proxy(_show, {
         obj[name] = ''+value
             //console.log(name + ",  " + value)
         render()
+        return true;
     }
 })
 

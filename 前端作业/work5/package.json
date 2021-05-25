@@ -3,11 +3,15 @@
   "version": "0.0.1",
   "description": "A mini calculator.",
   "scripts": {
-    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js"
+    "dev": "webpack server --inline --progress --config webpack.config.js"
   },
   "main": "src/calc.js",
   "dependencies": {
-    "webpack": "^5.37.1"
+    "css-loader": "^5.2.6",
+    "html-webpack-plugin": "^5.3.1",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.37.1",
+    "webpack-cli": "^4.7.0"
   },
   "devDependencies": {
     "webpack-dev-server": "^3.11.2"
