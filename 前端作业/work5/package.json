@@ -6,7 +6,7 @@
     "dev": "webpack server --config webpack.config.js",
     "build": "webpack  --config webpack.config.js"
   },
-  "main": "src/calc.js",
+  "private":true,
   "dependencies": {
     "css-loader": "^5.2.6",
     "html-webpack-plugin": "^5.3.1",
